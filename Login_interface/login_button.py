@@ -19,7 +19,7 @@ class LoginButton(QPushButton):
     def start_animation(self):
         self.ani = QPropertyAnimation(self, b'color_opacity')
         self.ani.setDuration(200)
-        self.ani.setStartValue(self.color_opacity())
+        self.ani.setStartValue(self.m_color_opacity)
         self.ani.setEndValue(188)
         self.ani.setEasingCurve(QEasingCurve.Linear)
 
@@ -70,6 +70,8 @@ class LoginButton(QPushButton):
     def set_color_opacity(self, color_opacity):
         self.m_color_opacity = color_opacity
         self.update()
+
+    color_opacity = pyqtProperty(int, color_opacity, set_color_opacity)
 
     def center_text(self):
         return self.m_center_text
